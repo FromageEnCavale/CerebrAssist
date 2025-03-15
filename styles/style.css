@@ -1,0 +1,323 @@
+/* ----- RESET CSS ----- */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul[role='list'], ol[role='list'] {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button, input, textarea, select {
+    font: inherit;
+    color: inherit;
+    border: none;
+    background: none;
+    appearance: none;
+}
+
+:focus {
+    outline: none;
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+input, textarea, select, button {
+    border-radius: 0;
+}
+
+textarea {
+    all: unset;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    resize: vertical;
+    scrollbar-width: none;
+}
+
+textarea::-webkit-scrollbar {
+    display: none;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+/* ----- COLORS ----- */
+
+:root {
+    --background-light: #F8F9FA;
+    --background-dark: #212529;
+    --accent-light: #E9ECEF;
+    --accent-dark: #343A40;
+    --text-light: #212529;
+    --text-dark: #F8F9FA;
+}
+
+/* ----- BODY ----- */
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-wrap: anywhere;
+    color: var(--text);
+    background-color: var(--background);
+    font-family: system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.noSelect {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* ----- HEADER ----- */
+
+header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 750px;
+    padding: 10px 0;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    width: 34px;
+    height: 34px;
+    transform: translateX(-50%);
+}
+
+.deleteButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 14px;
+    border-radius: 14px;
+    cursor: pointer;
+}
+
+/* ----- MAIN ----- */
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 750px;
+    height: 100%;
+    padding: 0 14px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.messagesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    height: 100%;
+    padding: 24px 0 24% 0;
+    overflow-y: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    padding: 10px 0;
+}
+
+.user {
+    align-items: end;
+    max-width: 80%;
+    margin-left: auto;
+    padding: 10px 14px;
+    border-radius: 14px 14px 4px 14px;
+    white-space: pre-wrap;
+    background-color: var(--accent);
+}
+
+.assistant {
+    align-items: start;
+    width: 100%;
+    margin-right: auto;
+    opacity: 0;
+    animation: fadeIn 0.4s ease-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* ----- FOOTER ----- */
+
+footer {
+    width: 750px;
+    height: fit-content;
+    padding-bottom: 10px;
+}
+
+.inputField {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    background-color: var(--accent);
+}
+
+.userInput {
+    width: 100%;
+    max-height: 200px;
+    resize: none;
+}
+
+.sendButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.sendButtonContainer.expanded {
+    align-items: flex-end;
+}
+
+.sendButton {
+    width: 34px;
+    height: 34px;
+    transform: scaleY(-1);
+    cursor: pointer;
+}
+
+/* ----- MARKDOWN ----- */
+
+code {
+    padding: 4px;
+    border-radius: 4px;
+    background-color: var(--accent);
+    font-size: 14px;
+}
+
+pre {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 2px solid var(--accent);
+    overflow-x: auto;
+    scrollbar-width: none;
+    line-height: 1.4;
+}
+
+pre code {
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+ul, ol {
+    padding-left: 28px;
+}
+
+/* ----- MEDIA QUERY ----- */
+
+@media (max-width: 778px) {
+
+    header {
+        width: 100%;
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--accent);
+    }
+
+    main {
+        width: 100%;
+    }
+
+    footer {
+        width: 100%;
+        padding-bottom: 0;
+    }
+
+    .inputField {
+        border-radius: 14px 14px 0 0;
+    }
+
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+    .deleteButton:hover {
+        background-color: var(--accent);
+    }
+
+    .sendButton:hover {
+        opacity: 80%;
+    }
+
+    .deleteButton:active {
+        opacity: 40%;
+    }
+
+    .sendButton:active {
+        opacity: 40%;
+    }
+
+}
+
+@media (prefers-color-scheme: light) {
+
+    :root {
+        --background: var(--background-light);
+        --accent: var(--accent-light);
+        --text: var(--text-light);
+    }
+
+}
+
+@media (prefers-color-scheme: dark) {
+
+    :root {
+        --background: var(--background-dark);
+        --accent: var(--accent-dark);
+        --text: var(--text-dark);
+    }
+
+}
