@@ -79,7 +79,7 @@ async function sendMessage() {
 
     try {
 
-        const response = await fetch('/api/openai', {
+        const response = await fetch('/api/proxy', {
 
             method: 'POST',
 

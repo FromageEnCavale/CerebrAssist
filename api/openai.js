@@ -1,3 +1,4 @@
+/*
 import OpenAI from "openai";
 
 const apiKey = process.env.API_KEY_OPENAI;
@@ -79,3 +80,4 @@ export default async function handler(req, res) {
     }
 
 }
+*/
