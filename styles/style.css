@@ -165,7 +165,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 14px;
+    gap: 10px;
     width: 100%;
     padding: 10px 14px 14px 14px;
     border-radius: 14px 14px 0 0;
@@ -190,7 +190,7 @@ footer {
 .buttonContainer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
     height: fit-content;
 }
 
@@ -203,21 +203,12 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 6px;
-    padding: 6px 10px;
+    padding: 4px 10px;
     border-radius: 10px;
     color: rgba(251, 86, 7, 0.85);
     background-color: rgba(251, 86, 7, 0.15);
-    line-height: normal;
+    line-height: 1.4;
     font-size: 14px;
-}
-
-.flash {
-    height: 16px;
-}
-
-.meta {
-    height: 12px;
 }
 
 .sendButtonContainer {
