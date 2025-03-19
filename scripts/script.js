@@ -7,8 +7,6 @@ const messagesContainer = document.getElementById('messagesContainer');
 
 const userInput = document.getElementById('userInput');
 
-const sendButtonContainer = document.getElementById('sendButtonContainer');
-
 const sendButton = document.getElementById('sendButton');
 
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -63,7 +61,7 @@ function addMessage(role, content) {
 
 async function sendMessage() {
 
-    const userMessage = userInput.value;
+    const userMessage = userInput.innerText.trim();
 
     if (!userMessage) return;
 
@@ -71,11 +69,9 @@ async function sendMessage() {
 
     addMessage('user', userMessage);
 
-    userInput.value = '';
+    userInput.innerText = '';
 
     userInput.style.height = 'auto';
-
-    sendButtonContainer.classList.remove('expanded');
 
     adjustHistory();
 
@@ -127,15 +123,15 @@ async function sendMessage() {
 
 }
 
-userInput.addEventListener('input', function () {
+userInput.addEventListener('paste', function(e) {
 
-    this.style.height = 'auto';
+    e.preventDefault();
 
-    const newHeight = Math.min(this.scrollHeight, 200);
+    const clipboardData = e.clipboardData || window.clipboardData;
 
-    this.style.height = newHeight + 'px';
+    const text = clipboardData.getData('text/plain');
 
-    sendButtonContainer.classList.toggle('expanded', newHeight > 54);
+    document.execCommand('insertText', false, text);
 
 });
 

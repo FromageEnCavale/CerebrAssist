@@ -39,32 +39,6 @@ input, textarea, select, button {
     border-radius: 0;
 }
 
-textarea {
-    all: unset;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font: inherit;
-    color: inherit;
-    width: 100%;
-    height: auto;
-    box-sizing: border-box;
-    resize: vertical;
-    scrollbar-width: none;
-}
-
-textarea::-webkit-scrollbar {
-    display: none;
-}
-
-textarea:focus {
-    outline: none;
-}
-
 /* ----- COLORS ----- */
 
 :root {
@@ -189,10 +163,11 @@ footer {
 
 .inputField {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     gap: 14px;
     width: 100%;
-    padding: 10px 14px;
+    padding: 10px 14px 14px 14px;
     border-radius: 14px 14px 0 0;
     background-color: var(--accent);
 }
@@ -200,17 +175,53 @@ footer {
 .userInput {
     width: 100%;
     max-height: 200px;
-    resize: none;
+    height: fit-content;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.userInput:empty:before {
+    content: attr(data-placeholder);
+    color: var(--text);
+    opacity: 50%;
+    pointer-events: none;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+}
+
+.detailButtonContainer {
+    display: flex;
+    gap: 4px;
+}
+
+.detailButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    color: rgba(251, 86, 7, 0.85);
+    background-color: rgba(251, 86, 7, 0.15);
+    line-height: normal;
+    font-size: 14px;
+}
+
+.flash {
+    height: 16px;
+}
+
+.meta {
+    height: 12px;
 }
 
 .sendButtonContainer {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-.sendButtonContainer.expanded {
-    align-items: flex-end;
 }
 
 .sendButton {
