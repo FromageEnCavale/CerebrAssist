@@ -42,12 +42,12 @@ input, textarea, select, button {
 /* ----- COLORS ----- */
 
 :root {
-    --background-light: #F8F9FA;
-    --background-dark: #212529;
-    --accent-light: #E9ECEF;
-    --accent-dark: #343A40;
-    --text-light: #212529;
-    --text-dark: #F8F9FA;
+    --background-light: #FFFFFF;
+    --background-dark: #333333;
+    --accent-light: #F5F5F5;
+    --accent-dark: #3D3D3D;
+    --text-light: #333333;
+    --text-dark: #FFFFFF;
 }
 
 /* ----- BODY ----- */
