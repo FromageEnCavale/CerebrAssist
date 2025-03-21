@@ -71,11 +71,12 @@ async function sendMessage() {
 
     if (!userMessage) return;
 
-    const tokenCount = countTokens(userMessage);
-    console.log("Nombre de tokens estimés :", tokenCount);
-    if (tokenCount > 6868) {
+    if (countTokens(userMessage) > 6868) {
+
         alert("Your message exceeds the limit of 8192 tokens. Please shorten it.");
+
         return;
+
     }
 
     conversationHistory.push({ role: 'user', content: userMessage });
