@@ -45,7 +45,10 @@ function adjustHistory() {
 
 // New
 function countTokens(text) {
-    return text.trim().split(/\s+/).length;
+    // On enlève les espaces en trop et on découpe en "mots"
+    // La regex ci-dessous sépare les mots et inclut ponctuation et chiffres
+    const tokens = text.trim().match(/[\wÀ-ÖØ-öø-ÿ']+|[^\s\w]/g);
+    return tokens ? tokens.length : 0;
 }
 
 // New
