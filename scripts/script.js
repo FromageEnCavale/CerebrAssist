@@ -85,6 +85,9 @@ async function sendMessage() {
     if (!userMessage) return;
 
     // New
+    console.log("Nombre de tokens estimés :", tokenCount);
+
+    // New
     if (countTokens(userMessage) > 8192) {
         alert("Your message exceeds the limit of 8192 tokens. Please shorten it.");
         return;
