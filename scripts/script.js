@@ -85,6 +85,7 @@ async function sendMessage() {
     if (!userMessage) return;
 
     // New
+    const tokenCount = countTokens(userMessage);
     console.log("Nombre de tokens estimés :", tokenCount);
 
     // New
