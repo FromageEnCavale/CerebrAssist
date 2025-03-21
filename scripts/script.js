@@ -13,8 +13,6 @@ const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 let conversationHistory = [];
 
-/*let maxCharacters = 8000;*/
-
 function parseMarkdown(text) {
 
     const rawHTML = marked(text);
@@ -23,46 +21,32 @@ function parseMarkdown(text) {
 
 }
 
-/*function calculateHistorySize(history) {
-
-    return history.reduce((total, message) => {
-
-        return total + message.role.length + message.content.length;
-
-    }, 0);
-
-}
-
-function adjustHistory() {
-
-    while (conversationHistory.length > 1 && calculateHistorySize(conversationHistory) > maxCharacters) {
-
-        conversationHistory.shift();
-
-    }
-
-}*/
-
-// New
 function countTokens(text) {
-    // On enlève les espaces en trop et on découpe en "mots"
-    // La regex ci-dessous sépare les mots et inclut ponctuation et chiffres
+
     const tokens = text.trim().match(/[\wÀ-ÖØ-öø-ÿ']+|[^\s\w]/g);
+
     return tokens ? tokens.length : 0;
+
 }
 
-// New
 function calculateHistoryTokens(history) {
+
     return history.reduce((total, message) => {
+
         return total + countTokens(message.content);
+
     }, 0);
+
 }
 
-// New
 function adjustHistory() {
-    while (conversationHistory.length > 1 && calculateHistoryTokens(conversationHistory) > 8192) {
+
+    while (conversationHistory.length > 1 && calculateHistoryTokens(conversationHistory) > 4096) {
+
         conversationHistory.shift();
+
     }
+
 }
 
 function addMessage(role, content) {
@@ -89,8 +73,8 @@ async function sendMessage() {
 
     const tokenCount = countTokens(userMessage);
     console.log("Nombre de tokens estimés :", tokenCount);
-    if (tokenCount > 8192) {
-        alert("Your message exceeds the limit of 8192 tokens. Please shorten it.");
+    if (tokenCount > 4096) {
+        alert("Your message exceeds the limit of 4096 tokens. Please shorten it.");
         return;
     }
 
