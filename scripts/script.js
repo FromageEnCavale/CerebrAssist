@@ -41,7 +41,7 @@ function calculateHistoryTokens(history) {
 
 function adjustHistory() {
 
-    while (conversationHistory.length > 1 && calculateHistoryTokens(conversationHistory) > 4096) {
+    while (conversationHistory.length > 1 && calculateHistoryTokens(conversationHistory) > 7192) {
 
         conversationHistory.shift();
 
@@ -73,8 +73,8 @@ async function sendMessage() {
 
     const tokenCount = countTokens(userMessage);
     console.log("Nombre de tokens estimés :", tokenCount);
-    if (tokenCount > 4096) {
-        alert("Your message exceeds the limit of 4096 tokens. Please shorten it.");
+    if (tokenCount > 7192) {
+        alert("Your message exceeds the limit of 8192 tokens. Please shorten it.");
         return;
     }
 
